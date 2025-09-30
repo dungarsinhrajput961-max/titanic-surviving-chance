@@ -1,0 +1,15 @@
+# Fill missing age values with the mean
+df['age'].fillna(df['age'].mean(), inplace=True)
+
+# Fill missing embarked and embark_town with the mode
+df['embarked'].fillna(df['embarked'].mode()[0], inplace=True)
+df['embark_town'].fillna(df['embark_town'].mode()[0], inplace=True)
+
+# Drop the deck column
+df.drop('deck', axis=1, inplace=True)
+
+# Convert categorical variables to dummy variables
+df = pd.get_dummies(df, columns=['sex', 'embarked', 'class', 'who', 'embark_town'], drop_first=True)
+
+# Drop columns that are not useful for prediction
+df.drop(['alive', 'adult_male', 'pclass'], axis=1, inplace=True)
