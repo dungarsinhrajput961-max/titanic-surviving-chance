@@ -1,0 +1,6 @@
+# Make predictions on the test set
+y_pred = model.predict(X_test)
+
+# Evaluate the model's performance
+print("Accuracy:", accuracy_score(y_test, y_pred))
+print("\nClassification Report:\n", classification_report(y_test, y_pred))
